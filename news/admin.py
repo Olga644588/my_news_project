@@ -22,7 +22,7 @@ class ScopeInlineFormSet(BaseInlineFormSet):
                 main_count += 1
             if tag:
                 if tag.id in tag_ids:
-                    raise ValidationError(f'Тег "{tag.name}" указан дважды. Удалите дубликат.')
+                    raise ValidationError(f'Тег "{tag.name}" Если указан дважды, удалить дубликат.')
                 tag_ids.add(tag.id)
 
         if main_count == 0:
