@@ -11,8 +11,6 @@ class Tag(models.Model):
         verbose_name = 'Тег'
         verbose_name_plural = 'Теги'
 
-
-
 class Article(models.Model):
     title = models.CharField(max_length=256, verbose_name='Заголовок')
     text = models.TextField(verbose_name='Текст')
@@ -28,7 +26,6 @@ class Article(models.Model):
 
     def __str__(self):
         return self.title
-
 class Scope(models.Model):
     article = models.ForeignKey(
         Article,
@@ -42,14 +39,8 @@ class Scope(models.Model):
     )
     is_main = models.BooleanField(default=False, verbose_name='Основной раздел')
 
-
     def __str__(self):
-        return f"{self.article.title} → {self.tag.name} (main: {self.is_main})"
-
+        return f"{self.article.title} → {self.tag.name} (основной: {self.is_main})"
 
     class Meta:
-        unique_together = ('article', 'tag')  
-        
-    def __str__(self):
-        return f"{self.article.title} → {self.tag.name}"
-    
+        unique_together = ('article', 'tag')
